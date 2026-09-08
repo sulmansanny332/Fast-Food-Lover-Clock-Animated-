@@ -1,0 +1,131 @@
+:root {
+  --ink: #090806;
+  --cream: #f5e9cf;
+  --gold: #c9a15f;
+  --gold-bright: #f0ce87;
+  --red: #8f211b;
+  --green: #263f2b;
+}
+
+* { box-sizing: border-box; }
+
+html { min-height: 100%; background: var(--ink); }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--cream);
+  font-family: "Montserrat", sans-serif;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(120, 65, 24, .2), transparent 33%),
+    linear-gradient(135deg, #050504 0%, #12100c 48%, #070605 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+}
+
+.ambient { position: fixed; width: 32rem; height: 32rem; border-radius: 50%; filter: blur(120px); opacity: .13; pointer-events: none; }
+.ambient-one { background: #b56b22; left: -18rem; top: 10%; }
+.ambient-two { background: #6e1010; right: -19rem; bottom: -8rem; }
+
+.experience { position: relative; width: min(1100px, 100%); min-height: 100vh; margin: auto; padding: 34px 40px 28px; display: flex; flex-direction: column; }
+
+.hero-heading { display: flex; align-items: center; justify-content: center; gap: clamp(10px, 2vw, 22px); text-align: center; animation: titleReveal .9s ease-out both; }
+.title-copy p { margin: 0; color: var(--cream); font: 700 clamp(27px, 4vw, 43px)/.85 "Cormorant Garamond", serif; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 0 24px rgba(240,206,135,.2); }
+.title-copy > span { display: inline-block; margin: 5px 0 1px; color: var(--gold); font: 600 9px/1 "Montserrat", sans-serif; letter-spacing: .5em; text-transform: uppercase; }
+.title-copy h1 { margin: 0; color: var(--gold-bright); font: 600 clamp(18px, 2.7vw, 28px)/1 "Cormorant Garamond", serif; letter-spacing: .12em; text-transform: uppercase; }
+.title-pizza { display: inline-block; font-size: clamp(29px, 4.5vw, 48px); filter: drop-shadow(0 6px 7px rgba(0,0,0,.7)); animation: pizzaDance 2.5s ease-in-out infinite; }
+.pizza-right { animation-delay: -1.25s; }
+
+.clock-stage { flex: 1; min-height: 540px; display: flex; align-items: center; justify-content: center; padding: 20px 0 8px; perspective: 1000px; }
+.clock-wrap { position: relative; width: clamp(390px, 51vw, 570px); aspect-ratio: 1; filter: drop-shadow(0 44px 32px rgba(0,0,0,.9)); transform: rotateX(5deg); animation: arrive .9s cubic-bezier(.2,.8,.2,1) both; }
+.gold-ring { position: absolute; inset: -15px; border: 1px solid rgba(201,161,95,.72); border-radius: 50%; box-shadow: 0 0 0 5px rgba(22,16,8,.9), 0 0 45px rgba(209,139,49,.16), inset 0 0 14px rgba(240,206,135,.3); }
+.gold-ring::before, .gold-ring::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(201,161,95,.25); }
+.gold-ring::before { inset: -8px; }.gold-ring::after { inset: 7px; }
+
+.pizza-clock { position: absolute; inset: 0; border-radius: 50%; overflow: visible; }
+.real-pizza { position: absolute; inset: -1.2%; z-index: 1; width: 102.4%; height: 102.4%; object-fit: contain; border-radius: 50%; user-select: none; pointer-events: none; filter: blur(.8px) saturate(1.08) contrast(1.04); }
+.pizza-glaze { position: absolute; inset: 3%; z-index: 2; border-radius: 50%; pointer-events: none; background: radial-gradient(circle at 32% 22%, rgba(255,240,185,.17), transparent 25%), radial-gradient(circle, transparent 61%, rgba(35,10,2,.25) 88%, rgba(0,0,0,.42) 100%); box-shadow: inset 8px 10px 14px rgba(255,221,145,.12), inset -12px -17px 22px rgba(39,10,0,.35); }
+
+.food-marker { position: absolute; z-index: 13; width: 17%; height: 20%; display: grid; place-items: center; transform: translate(-50%,-50%); filter: drop-shadow(2px 5px 4px rgba(48,18,3,.75)); }
+.food-marker img { position: absolute; top: 12%; width: 100%; height: 92%; object-fit: contain; transform-origin: 50% 90%; animation: foodFloat 2.6s ease-in-out infinite; }
+.marker-12 { left: 50%; top: 1%; }
+.marker-3 { left: 96.5%; top: 50%; }
+.marker-6 { left: 50%; top: 96.5%; }
+.marker-9 { left: 3.5%; top: 50%; }
+.marker-3 img { animation-delay: -.65s; }.marker-6 img { animation-delay: -1.3s; }.marker-9 img { animation-delay: -1.95s; }
+
+.hand { position: absolute; left: 50%; bottom: 50%; z-index: 10; transform-origin: 50% 100%; will-change: transform; filter: drop-shadow(3px 5px 3px rgba(60,25,4,.72)); }
+.fork-hand { width: 8%; }
+.hour-hand { height: 27%; margin-left: -4%; }
+.minute-hand { height: 37%; margin-left: -4%; }
+.fork-handle { position: absolute; left: 38%; bottom: -3%; width: 24%; height: 76%; border-radius: 40% 40% 18% 18%; background: linear-gradient(90deg, #2e302f, #dddeda 20%, #717572 44%, #f2f2ec 66%, #464846 100%); box-shadow: inset 1px 0 1px #fff, inset -1px 0 2px #202221; }
+.fork-head { position: absolute; left: 12%; top: 0; width: 76%; height: 31%; border-radius: 45% 45% 32% 32%; background: linear-gradient(90deg, #393b3a, #e5e5df 31%, #686b69 55%, #f4f3ec 77%, #343635); }
+.fork-head i { position: absolute; top: -2%; width: 16%; height: 72%; border-radius: 50% 50% 5px 5px; background: linear-gradient(90deg, #373938, #f3f3ed 55%, #454746); }
+.fork-head i:nth-child(1) { left: 0; }.fork-head i:nth-child(2) { left: 28%; }.fork-head i:nth-child(3) { right: 28%; }.fork-head i:nth-child(4) { right: 0; }
+.knife-hand { width: 5.5%; height: 40%; margin-left: -2.75%; z-index: 11; }
+.knife-blade { position: absolute; left: 8%; top: 0; width: 84%; height: 72%; background: linear-gradient(90deg, #555856, #f7f6ef 30%, #a9aba7 66%, #3c3e3c); clip-path: polygon(34% 0, 100% 4%, 80% 100%, 17% 100%, 0 24%); border-radius: 55% 15% 4px 3px; }
+.knife-handle { position: absolute; left: 31%; bottom: -14%; width: 38%; height: 48%; border-radius: 4px 4px 40% 40%; background: linear-gradient(90deg, #181918, #696b66 35%, #242523 65%, #8a8b84); box-shadow: 0 0 0 1px #171817; }
+.clock-pin { position: absolute; z-index: 12; left: 50%; top: 50%; width: 23px; height: 23px; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff0b2, #a8772f 52%, #2f1c08 100%); box-shadow: 0 2px 5px #4f240c, 0 0 0 3px rgba(89,54,16,.45); }
+
+.creator-panel { display: flex; justify-content: center; width: 100%; margin-top: -3px; padding: 10px 0; text-align: center; }
+.creator-panel::before, .creator-panel::after { content: ""; align-self: center; width: min(12vw, 110px); height: 1px; margin: 0 22px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.creator-panel::after { transform: rotate(180deg); }
+
+footer { margin-top: 10px; display: flex; align-items: center; justify-content: center; color: rgba(245,233,207,.5); }
+.creator { display: flex; align-items: center; min-width: 0; gap: 13px; }
+.creator-avatar { position: relative; width: 70px; height: 70px; flex: 0 0 70px; display: grid; place-items: center; border: 2px solid var(--gold); border-radius: 50%; color: var(--gold-bright); background: radial-gradient(circle at 35% 25%, #49351d, #0d0b08 68%); box-shadow: 0 0 0 4px rgba(201,161,95,.1), 0 0 20px rgba(201,161,95,.2); font: 700 19px "Cormorant Garamond", serif; overflow: hidden; animation: avatarGlow 2.4s ease-in-out infinite; }
+.creator-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transform: scale(1.08); }
+.creator-copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; }
+.creator-copy small { color: rgba(245,233,207,.48); font: 500 7px "Montserrat", sans-serif; letter-spacing: .28em; text-transform: uppercase; }
+.creator-copy strong { color: #fff0d0; font: 600 25px/1.05 "Cormorant Garamond", serif; letter-spacing: .05em; white-space: nowrap; animation: nameShine 3s linear infinite; }
+.creator-copy > span { color: var(--gold); font: 500 10px "Montserrat", sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+button { display: flex; align-items: center; gap: 8px; border: 1px solid rgba(201,161,95,.3); border-radius: 999px; padding: 9px 14px; color: rgba(245,233,207,.7); background: rgba(255,255,255,.025); font: 500 8px "Montserrat"; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: .25s ease; }
+button:hover { border-color: var(--gold); color: var(--gold-bright); background: rgba(201,161,95,.08); }
+.sound-icon { color: var(--gold); font-size: 12px; }
+
+@keyframes arrive { from { opacity: 0; transform: rotateX(12deg) scale(.88); } to { opacity: 1; transform: rotateX(5deg) scale(1); } }
+@keyframes foodFloat { 0%, 100% { transform: translateY(0) rotate(-2deg) scale(1); } 50% { transform: translateY(-7%) rotate(2deg) scale(1.06); } }
+@keyframes titleReveal { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pizzaDance { 0%, 100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-7px) rotate(8deg) scale(1.08); } }
+@keyframes avatarGlow { 50% { box-shadow: 0 0 0 7px rgba(201,161,95,.05), 0 0 30px rgba(201,161,95,.38); } }
+@keyframes nameShine { 0%, 100% { color: #fff0d0; text-shadow: none; } 50% { color: #f4c968; text-shadow: 0 0 12px rgba(244,201,104,.45); } }
+
+@media (max-width: 720px) {
+  .experience { padding: 24px 18px 22px; }
+  .hero-heading { gap: 8px; }
+  .clock-stage { min-height: 410px; padding-top: 12px; }
+  .clock-wrap { width: min(82vw, 410px); }
+  .creator-panel::before, .creator-panel::after { width: 8vw; margin: 0 10px; }
+  footer { margin-top: auto; flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 430px) {
+  .clock-stage { min-height: 350px; }
+  .clock-wrap { width: 74vw; }
+  .gold-ring { inset: -9px; }
+  .food-marker { width: 19%; height: 19%; }
+  .creator-panel { margin-top: 2px; padding: 8px 0 10px; }
+  .creator-panel::before, .creator-panel::after { display: none; }
+  .creator { width: min(100%, 315px); justify-content: center; gap: 12px; }
+  .creator-avatar { width: 58px; height: 58px; flex-basis: 58px; border-width: 1.5px; }
+  .creator-copy strong { font-size: clamp(20px, 6.2vw, 23px); letter-spacing: .02em; }
+  .creator-copy > span { font-size: 8px; letter-spacing: .13em; }
+  .creator-copy small { font-size: 6px; letter-spacing: .22em; }
+}
+
+@media (max-width: 340px) {
+  .creator { gap: 9px; }
+  .creator-avatar { width: 52px; height: 52px; flex-basis: 52px; }
+  .creator-copy strong { font-size: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { .food-marker img, .title-pizza, .creator-avatar, .creator-copy strong { animation: none; } }

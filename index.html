@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0908" />
+    <title>Forno Tempo — Pizza Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="experience">
+    <header class="hero-heading">
+      <span class="title-pizza" aria-hidden="true">🍕</span>
+      <div class="title-copy">
+        <p>Pizza Clock</p>
+        <span>For</span>
+        <h1>Fast Food Lovers</h1>
+      </div>
+      <span class="title-pizza pizza-right" aria-hidden="true">🍕</span>
+      </header>
+      <section class="clock-stage" aria-label="Live pizza clock">
+        <div class="clock-wrap">
+          <div class="gold-ring"></div>
+          <div class="pizza-clock" id="clock">
+            <img
+              class="real-pizza"
+              src="assets/pizza-mayo-kebab.png"
+              alt="Freshly baked pizza with pepperoni, olives, mayonnaise and grilled kebab"
+            />
+            <div class="pizza-glaze" aria-hidden="true"></div>
+
+            <div class="food-markers" id="foodMarkers" aria-hidden="true"></div>
+            <div
+              class="hand fork-hand hour-hand"
+              id="hourHand"
+              aria-hidden="true"
+            >
+              <span class="fork-handle"></span
+              ><span class="fork-head"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div
+              class="hand fork-hand minute-hand"
+              id="minuteHand"
+              aria-hidden="true"
+            >
+              <span class="fork-handle"></span
+              ><span class="fork-head"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div
+              class="hand knife-hand second-hand"
+              id="secondHand"
+              aria-hidden="true"
+            >
+              <span class="knife-handle"></span
+              ><span class="knife-blade"></span>
+            </div>
+            <div class="clock-pin"></div>
+          </div>
+        </div>
+      </section>
+
+    <section class="creator-panel" aria-label="Creator information">
+      <div class="creator">
+        <div class="creator-avatar">
+          <img src="assets/muhammad-suleman.jpeg" alt="Muhammad Suleman">
+        </div>
+        <div class="creator-copy">
+          <small>Created by</small>
+          <strong>Muhammad Suleman</strong>
+          <span>Software Engineer</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <button id="soundToggle" type="button" aria-pressed="false">
+          <span class="sound-icon">♪</span
+          ><span id="soundText">Tick sound off</span>
+        </button>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
